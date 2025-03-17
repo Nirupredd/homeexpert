@@ -4,10 +4,10 @@ Content-Type: application/json
 
 {
     "profileImg":"harin.jpg",
-    "mobileNumber":"9078740908",
+    "mobileNumber":"9078740907",
     "firstName":"Nirup",
     "lastName":"reddy",
-    "email":"harin@gmail.com"
+    "email":"haring@gmail.com"
 }
 
 ### get user
@@ -15,3 +15,28 @@ GET http://localhost:3000/user-api/users
 
 ### get user by phone
 GET http://localhost:3000/user-api/user/907874098900
+
+
+
+###post request for shop
+POST http://localhost:3000/shopkeeper-api/shopkeeper
+Content-Type: application/json
+
+{
+  "profileImg": "https://example.com/image.jpg",
+  "mobileNumber": "+919876543210",
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "johndoe@example.com",
+  "shopName": "Doe Electronics",
+  "shopAddress": {
+    "state": "Maharashtra",
+    "city": "Mumbai",
+    "pincode": "400001",
+    "address": {
+      "flatNO": "101",
+      "landmark": "Near Mall",
+      "area": "Andheri West"
+    }
+  }
+}

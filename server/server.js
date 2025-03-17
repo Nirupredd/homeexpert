@@ -23,7 +23,7 @@ mongoose.connect(process.env.DB_URL)
 app.use(exp.json())
 //API routes
 app.use('/user-api',userApp)
-// app.use('/shopkeeper-api',shopApp)
+app.use('/shopkeeper-api',shopApp)
 // app.use('/worker-api',workerApp)
 // app.use('/worker-api',deliveryPApp)
 

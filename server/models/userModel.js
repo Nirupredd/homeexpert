@@ -30,7 +30,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     unique: true,
     lowercase: true,
-  }
+  },
 });
 
 const User=mongoose.model('user',userSchema);

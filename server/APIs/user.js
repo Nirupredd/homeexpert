@@ -8,7 +8,6 @@ userApp.post('/user',expressAsyncHandler(async(req,res)=>{
      //get user or author
      const user=req.body;
      //find user by email id
-     const userInDb=await userModel.findOne({mobileNumber:user.mobileNumber});
       let newUser=new userModel(user);
       let newUserDoc=await newUser.save();
       res.status(201).send({message:newUserDoc.role,payload:newUserDoc})
