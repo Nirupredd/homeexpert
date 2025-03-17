@@ -25,7 +25,7 @@ app.use(exp.json())
 // app.use('/shopkeeper-api',shopApp)
 // app.use('/worker-api',workerApp)
 
-//error handler
+// error handler
 app.use((err,req,res,next)=>{
     console.log("err object in express error handler:",err)
     res.send({message:err.message})
