@@ -5,6 +5,7 @@ const mongoose =require("mongoose");
 const userApp = require("./APIs/user.js");
 const shopApp = require("./APIs/shopkeeper.js");
 const workerApp=require("./APIs/worker.js")
+const deliveryPApp=require("./APIs/deliveryPerson.js");
 const cors=require('cors')
 app.use(cors())
 const port=process.env.PORT || 4000
@@ -21,9 +22,10 @@ mongoose.connect(process.env.DB_URL)
 //body parser middleware
 app.use(exp.json())
 //API routes
-// app.use('/user-api',userApp)
+app.use('/user-api',userApp)
 // app.use('/shopkeeper-api',shopApp)
 // app.use('/worker-api',workerApp)
+// app.use('/worker-api',deliveryPApp)
 
 // error handler
 app.use((err,req,res,next)=>{
