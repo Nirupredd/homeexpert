@@ -1,0 +1,17 @@
+### post user
+POST http://localhost:3000/user-api/user 
+Content-Type: application/json
+
+{
+    "profileImg":"harin.jpg",
+    "mobileNumber":"9078740908",
+    "firstName":"Nirup",
+    "lastName":"reddy",
+    "email":"harin@gmail.com"
+}
+
+### get user
+GET http://localhost:3000/user-api/users
+
+### get user by phone
+GET http://localhost:3000/user-api/user/907874098900
