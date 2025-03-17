@@ -10,6 +10,7 @@ function App() {
   <h1 className='text-4xl'>Akshay</h1>
   <h1>RCB Won</h1>
   <h1>Harin</h1>
+  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa, ratione?</p>
    </div>
   )
 }
