@@ -10,7 +10,7 @@ app.use(cors())
 const port=process.env.PORT || 4000
 
 //data base connection
-mongoose.connect(process.env.DBURL)
+mongoose.connect(process.env.DB_URL)
 .then(
     ()=>{app.listen(port,()=>console.log(`server listening on port ${port}..`))
     console.log("Data Base Connection Success")
@@ -21,11 +21,11 @@ mongoose.connect(process.env.DBURL)
 //body parser middleware
 app.use(exp.json())
 //API routes
-app.use('/user-api',userApp)
-app.use('/shopkeeper-api',shopApp)
-app.use('/worker-api',workerApp)
+// app.use('/user-api',userApp)
+// app.use('/shopkeeper-api',shopApp)
+// app.use('/worker-api',workerApp)
 
-//error handler
+// error handler
 app.use((err,req,res,next)=>{
     console.log("err object in express error handler:",err)
     res.send({message:err.message})
