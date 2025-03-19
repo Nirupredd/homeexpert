@@ -26,4 +26,16 @@ workerApp.get('/worker/:mobileNumber',expressAsyncHandler(async(req,res)=>{
     res.status(201).send({message:"workers",payload:workers})
 }))
 
+//delete worker by id
+workerApp.delete('/workerid/:_id',expressAsyncHandler(async(req,res)=>{
+  const d_id=await workerModel.findByIdAndDelete(req.params._id)
+  res.status(201).send({message:"worker deleted",payload:d_id})
+}))
+
+//delete worker by phonenumber
+workerApp.delete('/workerph/:mobileNumber',expressAsyncHandler(async(req,res)=>{
+   const delete_id=await workerModel.findOneAndDelete({mobileNumber:req.params.mobileNumber})
+   res.status(201).send({message:"worker deleted ",payload:delete_id})
+}))
+
 module.exports=workerApp;

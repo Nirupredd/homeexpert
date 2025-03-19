@@ -26,4 +26,17 @@ shopKeeperApp.get('/shopkeeper/:mobileNumber',expressAsyncHandler(async(req,res)
   const shopkeeper=await shopKeeperModel.findOne({mobileNumber:req.params.mobileNumber});
   res.status(201).send({message:"shopkeepers",payload:shopkeeper})
 }))
+
+//delete shopkeeper by id
+shopKeeperApp.delete('/shopkeeperid/:_id',expressAsyncHandler(async(req,res)=>{
+  const d_id=await shopKeeperModel.findByIdAndDelete(req.params._id)
+  res.status(201).send({message:"Shop Kepper deleted",payload:d_id})
+}))
+
+//delete shopkeeper by phonenumber
+shopKeeperApp.delete('/shopkeeperph/:mobileNumber',expressAsyncHandler(async(req,res)=>{
+   const delete_id=await shopKeeperModel.findOneAndDelete({mobileNumber:req.params.mobileNumber})
+   res.status(201).send({message:"Shop Keeper deleted ",payload:delete_id})
+}))
+
 module.exports=shopKeeperApp;

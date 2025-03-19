@@ -26,5 +26,17 @@ deliveryPersonApp.get('/deliveryperson/:mobileNumber',expressAsyncHandler(async(
     res.status(201).send({message:"delivery persons",payload:delpersons})
 }))
 
+//delete deliveryPerson by id
+deliveryPersonApp.delete('/deliverypersonid/:_id',expressAsyncHandler(async(req,res)=>{
+  const d_id=await deliveryPersonModel.findByIdAndDelete(req.params._id)
+  res.status(201).send({message:"Delivery Person deleted",payload:d_id})
+}))
+
+//delete deliveryperson by phonenumber
+deliveryPersonApp.delete('/deliverypersonph/:mobileNumber',expressAsyncHandler(async(req,res)=>{
+   const delete_id=await deliveryPersonModel.findOneAndDelete({mobileNumber:req.params.mobileNumber})
+   res.status(201).send({message:"Delivery Person deleted ",payload:delete_id})
+}))
+
 
 module.exports=deliveryPersonApp;
