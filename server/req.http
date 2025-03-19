@@ -1,17 +1,113 @@
+###user https
 ### post user
 POST http://localhost:3000/user-api/user 
 Content-Type: application/json
 
 {
-    "profileImg":"harin.jpg",
-    "mobileNumber":"9078740908",
-    "firstName":"Nirup",
-    "lastName":"reddy",
-    "email":"harin@gmail.com"
+  "profileImg": "https://example.com/image.jpg",
+  "mobileNumber": "+919576543210",
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "johndo@example.com",
+  "Address": {
+    "state": "Maharashtra",
+    "city": "Mumbai",
+    "pincode": "400001",
+    "address": {
+      "flatNO": "101",
+      "landmark": "Near Mall",
+      "area": "Andheri West"
+    }
+  }
 }
 
 ### get user
 GET http://localhost:3000/user-api/users
 
 ### get user by phone
-GET http://localhost:3000/user-api/user/907874098900
+GET http://localhost:3000/user-api/user/9576543210
+
+
+
+###shop https
+###post request for shop
+POST http://localhost:3000/shopkeeper-api/shopkeeper
+Content-Type: application/json
+
+{
+  "profileImg": "https://example.com/image.jpg",
+  "mobileNumber": "+919876543210",
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "johndoe@example.com",
+  "shopName": "Doe Electronics",
+  "shopAddress": {
+    "state": "Maharashtra",
+    "city": "Mumbai",
+    "pincode": "400001",
+    "address": {
+      "flatNO": "101",
+      "landmark": "Near Mall",
+      "area": "Andheri West"
+    }
+  }
+}
+
+###get all shopkeeper
+GET http://localhost:3000/shopkeeper-api/shopkeepers
+
+###get shopkeeper by phone
+GET http://localhost:3000/shopkeeper-api/shopkeeper/+919876543210
+
+
+
+###delivery https
+###delivery person post req
+POST http://localhost:3000/delivery-api/deliveryPerson
+Content-Type: application/json
+
+{
+  "profileImg": "https://example1.com/image.jpg",
+  "mobileNumber":"+918897410789",
+  "firstName":"Harin",
+  "lastName":"Pasumarthi",
+  "email":"saihari798@gmail.com",
+  "dob":"2000-05-15",
+  "vechicle":true
+}
+
+###get all delivery person
+GET http://localhost:3000/delivery-api/deliveryPersons
+
+###get delivery person by phone
+GET http://localhost:3000/delivery-api/deliveryperson/+918897410789
+
+
+###worker https
+###worker person post req
+POST http://localhost:3000/worker-api/worker
+Content-Type: application/json
+
+{
+  "profileImg":"http://example1.com/image.jpg",
+  "mobileNumber":"+918790849561",
+  "firstName":"Ravi",
+  "lastName":"Karnam",
+  "email":"ravi@gmail.com",
+  "Address":{
+    "state":"Andhra Pradesh",
+    "city":"Tiruvuru",
+    "pincode":"521235",
+    "address":{
+      "flatNo":"101",
+      "landmark":"Near Main Road",
+      "area":"Andheri west"
+    }
+  }
+}
+
+###get all workers
+GET http://localhost:3000/worker-api/workers
+
+###get worker by phone
+GET http://localhost:3000/worker-api/worker/+918790849561
