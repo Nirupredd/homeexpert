@@ -14,5 +14,16 @@ shopKeeperApp.post('/shopkeeper',expressAsyncHandler(async(req,res)=>{
 }));
 
 
+//get all shopkeepers
+shopKeeperApp.get('/shopkeepers',expressAsyncHandler(async(req,res)=>{
+  const shoppersons=await shopKeeperModel.find();
+  res.status(201).send({message:"shopkeeper persons",payload:shoppersons})
+  }))
 
+//get shopkeeper by phone 
+shopKeeperApp.get('/shopkeeper/:mobileNumber',expressAsyncHandler(async(req,res)=>{
+  console.log(req.params.mobileNumber);
+  const shopkeeper=await shopKeeperModel.findOne({mobileNumber:req.params.mobileNumber});
+  res.status(201).send({message:"shopkeepers",payload:shopkeeper})
+}))
 module.exports=shopKeeperApp;

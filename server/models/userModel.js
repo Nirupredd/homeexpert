@@ -5,7 +5,41 @@ const validatePhoneNumber = (phone) => {
     return phoneNumber ? phoneNumber.isValid() : false;
 };
 // model for user
+const bulinfo=new mongoose.Schema({
+    flatNO:{
+        type:String,
+        required:true
+    },
+    landmark:{
+        type:String,
+        required:true
+    },
+    area:{
+        type:String,
+        required:true
+    }
 
+})
+const userAdd=new mongoose.Schema({
+    state:{
+        type:String,
+        required:true
+    },
+    city:{
+        type:String,
+        required:true
+    },
+    pincode: {
+        type: String,
+        required: true,
+        match: [/^\d{6}$/, "Pincode must be exactly 6 digits"],
+    },
+    address:{
+        type:bulinfo,
+        required:true
+    }
+
+})
 const userSchema = new mongoose.Schema({
   profileImg:{
         type: String
@@ -31,6 +65,10 @@ const userSchema = new mongoose.Schema({
     unique: true,
     lowercase: true,
   },
+  Address:{
+    type:userAdd,
+    required:true
+  }
 });
 
 const User=mongoose.model('user',userSchema);

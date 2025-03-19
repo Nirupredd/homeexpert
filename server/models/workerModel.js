@@ -5,8 +5,41 @@ const validatePhoneNumber = (phone) => {
     return phoneNumber ? phoneNumber.isValid() : false;
 };
 // model for user
+const bulinfo=new mongoose.Schema({
+  flatNo:{
+    type:String,
+    required:true
+},
+landmark:{
+    type:String,
+    required:true
+},
+area:{
+    type:String,
+    required:true
+}
+})
 
-const userSchema = new mongoose.Schema({
+const workeraddress=new mongoose.Schema({
+  state:{
+    type:String,
+    required:true
+},
+city:{
+    type:String,
+    required:true
+},
+pincode: {
+    type: String,
+    required: true,
+    match: [/^\d{6}$/, "Pincode must be exactly 6 digits"],
+},
+address:{
+    type:bulinfo,
+    required:true
+}
+})
+const workerSchema = new mongoose.Schema({
   profileImg:{
         type: String
      },
@@ -21,7 +54,7 @@ const userSchema = new mongoose.Schema({
   },
   firstName: {
     type: String,
-    required: true,
+    required: true
   },
   lastName: {
     type: String
@@ -29,10 +62,15 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     unique: true,
-    lowercase: true,
+    lowercase: true
   },
+  Address:{
+    type:workeraddress,
+    required:true
+  }
+
 });
 
-const User=mongoose.model('user',userSchema);
+const Worker=mongoose.model('worker',workerSchema);
 
-module.exports=User;
+module.exports=Worker;
