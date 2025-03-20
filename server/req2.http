@@ -57,6 +57,28 @@ GET http://localhost:3000/worker-api/workers
 ###get worker by phone
 GET http://localhost:3000/worker-api/worker/+918790849561
 
+###update a worker by phone
+PUT http://localhost:3000/worker-api/workerupdate/+918790849561
+Content-Type: application/json
+
+{
+  "profileImg":"http://example1.com/image.jpg",
+  "mobileNumber":"+918790849561",
+  "firstName":"Praveen",
+  "lastName":"Kumar",
+  "email":"ravi@gmail.com",
+  "Address":{
+    "state":"Andhra Pradesh",
+    "city":"Tiruvuru",
+    "pincode":"521236",
+    "address":{
+      "flatNo":"101",
+      "landmark":"Near Main Road",
+      "area":"Andheri west"
+    }
+  }
+}
+
 ###deleting a delivery person by id
 delete http://localhost:3000/worker-api/workerid/67db11ce395ae69780be1bc1
 
