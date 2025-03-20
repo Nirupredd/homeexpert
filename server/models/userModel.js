@@ -38,7 +38,6 @@ const userAdd=new mongoose.Schema({
         type:bulinfo,
         required:true
     }
-
 })
 const userSchema = new mongoose.Schema({
   profileImg:{

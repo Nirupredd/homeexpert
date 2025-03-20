@@ -67,6 +67,12 @@ const workerSchema = new mongoose.Schema({
   Address:{
     type:workeraddress,
     required:true
+  },
+  reviews:{
+    type:[{
+      rating:Number,
+      comment:String
+    }]
   }
 
 });

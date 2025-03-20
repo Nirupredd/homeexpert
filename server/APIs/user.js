@@ -1,6 +1,7 @@
 const exp=require('express');
 const userApp=exp.Router();
 const userModel=require('../models/userModel');
+const workerModel=require('../models/workerModel');
 const expressAsyncHandler=require('express-async-handler');
 // post the user
 userApp.post('/user',expressAsyncHandler(async(req,res)=>{
@@ -40,6 +41,11 @@ userApp.delete('/userph/:mobileNumber',expressAsyncHandler(async(req,res)=>{
      const delete_id=await userModel.findOneAndDelete({mobileNumber:req.params.mobileNumber})
      res.status(201).send({message:"User deleted ",payload:delete_id})
 }))
+// post a review 
+userApp.post('/userreview',expressAsyncHandler(async(req,res)=>{
+    //business logic(get user )
+    
+}));
 
 
 module.exports=userApp;
