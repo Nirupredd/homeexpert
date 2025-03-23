@@ -1,9 +1,15 @@
 const mongoose=require('mongoose');
 const { parsePhoneNumberFromString } = require('libphonenumber-js');
+const { v4: uuidv4 } = require('uuid');
 const validatePhoneNumber = (phone) => {
     const phoneNumber = parsePhoneNumberFromString(phone, 'IN'); // Change 'IN' to default country if needed
     return phoneNumber ? phoneNumber.isValid() : false;
 };
+function generateTimestampId() {
+  const timestamp = Date.now().toString().slice(-4); // Get last 4 digits of timestamp
+  const uuidPart = uuidv4().replace(/[^0-9]/g, '').substring(0, 2); // Extract 2 digits
+  return timestamp + uuidPart; // Combine to make 6 digits
+}
 const bulinfo=new mongoose.Schema({
     flatNO:{
         type:String,
@@ -21,6 +27,7 @@ const bulinfo=new mongoose.Schema({
 })
 // schema for address
 const shop=new mongoose.Schema({
+
     state:{
         type:String,
         required:true
@@ -42,7 +49,8 @@ const shop=new mongoose.Schema({
 })
 // model for user
 
-const userSchema = new mongoose.Schema({
+const shopKeeperSchema = new mongoose.Schema({
+  shopKeeperId: { type: String, default: generateTimestampId, unique: true,immutable: true},
   profileImg:{
         type: String
      },
@@ -78,6 +86,6 @@ const userSchema = new mongoose.Schema({
   }
 });
 
-const ShopKeeper=mongoose.model('shopkeeper',userSchema);
+const ShopKeeper=mongoose.model('shopkeeper',shopKeeperSchema);
 
 module.exports=ShopKeeper;

@@ -19,18 +19,18 @@ workerApp.get('/workers',expressAsyncHandler(async(req,res)=>{
     res.status(201).send({message:"workers",payload:workers})
 }))
 
-//get worker by phone number
-workerApp.get('/worker/:mobileNumber',expressAsyncHandler(async(req,res)=>{
-    console.log(req.params.mobileNumber);
-    const workers=await workerModel.findOne({mobileNumber:req.params.mobileNumber});
+//get worker by worker id
+workerApp.get('/worker/:workerId',expressAsyncHandler(async(req,res)=>{
+    console.log(req.params.workerId);
+    const workers=await workerModel.findOne({workerId:req.params.workerId});
     res.status(201).send({message:"workers",payload:workers})
 }))
-
-workerApp.put('/workerupdate/:mobileNumber', expressAsyncHandler(async (req, res) => {
-  console.log("Replacing worker:", req.params.mobileNumber);
-  // Find and replace worker by mobile number
+// update worker by id
+workerApp.put('/workerupdate/:id', expressAsyncHandler(async (req, res) => {
+  console.log("Replacing worker:", req.params.id);
+  // Find and replace worker by worker id
   const updatedWorker = await workerModel.findOneAndReplace(
-      { mobileNumber: req.params.mobileNumber },  // Find worker by mobileNumber
+      { _id: req.params.id},  // Find worker by _Id
       req.body,  // Replace with full new object
       { new: true }  // Return updated worker
   );
@@ -48,9 +48,9 @@ workerApp.delete('/workerid/:_id',expressAsyncHandler(async(req,res)=>{
   res.status(201).send({message:"worker deleted",payload:d_id})
 }))
 
-//delete worker by phonenumber
-workerApp.delete('/workerph/:mobileNumber',expressAsyncHandler(async(req,res)=>{
-   const delete_id=await workerModel.findOneAndDelete({mobileNumber:req.params.mobileNumber})
+//delete worker by workerId
+workerApp.delete('/worker/:workerId',expressAsyncHandler(async(req,res)=>{
+   const delete_id=await workerModel.findOneAndDelete({workerId:req.params.workerId})
    res.status(201).send({message:"worker deleted ",payload:delete_id})
 }))
 

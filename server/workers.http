@@ -1,0 +1,51 @@
+
+###worker https
+###worker person post req
+POST http://localhost:3000/worker-api/worker
+Content-Type: application/json
+
+{
+  "profileImg":"http://example1.com/image.jpg",
+  "mobileNumber":"+918790849561",
+  "firstName":"Ravi",
+  "lastName":"Karnam",
+  "email":"ravi@gmail.com",
+  "Address":{
+    "state":"Andhra Pradesh",
+    "city":"Tiruvuru",
+    "pincode":"521235",
+    "address":{
+      "flatNo":"101",
+      "landmark":"Near Main Road",
+      "area":"Andheri west"
+    }
+  }
+}
+
+###get all workers
+GET http://localhost:3000/worker-api/workers
+
+###get worker by id
+GET http://localhost:3000/worker-api/worker/997364
+
+###update a worker by id
+PUT http://localhost:3000/worker-api/workerupdate/67ddafa31ec24a1f56767d68
+Content-Type: application/json
+
+{
+  "profileImg":"http://example1.com/image.jpg",
+  "mobileNumber":"+918790849561",
+  "firstName":"Praveen",
+  "lastName":"Kumar",
+  "email":"ravi@gmail.com",
+  "Address":{
+    "state":"Andhra Pradesh",
+    "city":"Tiruvuru",
+    "pincode":"521236",
+    "address":{
+      "flatNo":"101",
+      "landmark":"Near Main Road",
+      "area":"Andheri west"
+    }
+  }
+}

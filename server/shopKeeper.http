@@ -1,0 +1,65 @@
+
+
+
+
+
+
+###shop https
+
+###post request for shop
+POST http://localhost:3000/shopkeeper-api/shopkeeper
+Content-Type: application/json
+
+{
+  "profileImg": "https://example.com/image.jpg",
+  "mobileNumber": "+919876543210",
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "johndoe@example.com",
+  "shopName": "Doe Electronics",
+  "shopAddress": {
+    "state": "Maharashtra",
+    "city": "Mumbai",
+    "pincode": "400001",
+    "address": {
+      "flatNO": "101",
+      "landmark": "Near Mall",
+      "area": "Andheri West"
+    }
+  }
+}
+
+###get all shopkeeper
+GET http://localhost:3000/shopkeeper-api/shopkeepers
+
+###get shopkeeper by shopKeeperID
+GET http://localhost:3000/shopkeeper-api/shopkeeper/943173
+
+###deleting a shopkeeper by db id
+delete http://localhost:3000/shopkeeper-api/shopkeeperid/67db0c166c01de968a84798b
+
+
+###delete a shopkeeper by shopKeeperID
+delete http://localhost:3000/shopkeeper-api/shopkeeper/077620
+
+###update a shopKeeper by id
+PUT http://localhost:3000/shopKeeper-api/shopKeeperupdate/67ddb57cce05e8d144861980
+Content-Type: application/json
+
+{
+  "profileImg":"http://example1.com/image.jpg",
+  "mobileNumber":"+918790849561",
+  "firstName":"Praveen",
+  "lastName":"Kumar",
+  "email":"ravi@gmail.com",
+  "Address":{
+    "state":"Andhra Pradesh",
+    "city":"Tiruvuru",
+    "pincode":"521236",
+    "address":{
+      "flatNo":"101",
+      "landmark":"Near Main Road",
+      "area":"Andheri west"
+    }
+  }
+}
