@@ -1,11 +1,8 @@
-
 const exp=require('express');
 const userApp=exp.Router();
-
 const userModel=require('../models/userModel');
 const workerModel=require('../models/workerModel');
 const expressAsyncHandler=require('express-async-handler');
-const { v4: uuidv4 } = require('uuid');
 // post the user
 userApp.post('/user',expressAsyncHandler(async(req,res)=>{
     //bussiness logic 
@@ -48,7 +45,6 @@ userApp.delete('/userid/:_id',expressAsyncHandler(async(req,res)=>{
     const d_id=await userModel.findByIdAndDelete(req.params._id)
     res.status(201).send({message:"User deleted",payload:d_id})
 }))
-
 // post a review 
 userApp.post('/userreview/:userId/:workerId',expressAsyncHandler(async(req,res)=>{
     //business logic(get user by userId)

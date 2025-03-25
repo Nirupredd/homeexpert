@@ -15,7 +15,6 @@ shopKeeperApp.post('/shopkeeper',expressAsyncHandler(async(req,res)=>{
 // update shopkeeper by id
 shopKeeperApp.put('/shopKeeperupdate/:id', expressAsyncHandler(async (req, res) => {
   console.log("Replacing shopKeeper:", req.params.id);
-  console.log(req.body)
   // Find and replace shopKeeper by shopKeeper id
   const updatedshopKeeper = await shopKeeperModel.findOneAndReplace(
       { _id: req.params.id },  // Find shopKeeper by shopKeeperId
@@ -27,6 +26,7 @@ shopKeeperApp.put('/shopKeeperupdate/:id', expressAsyncHandler(async (req, res) 
   }
   res.status(200).send({ message: "shopKeeper modified successfully", payload: updatedshopKeeper });
 }));
+
 
 
 //get all shopkeepers

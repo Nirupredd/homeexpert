@@ -37,7 +37,7 @@ deliveryPersonApp.get('/deliveryPersons',expressAsyncHandler(async(req,res)=>{
 //get all deliverypersons by id
 deliveryPersonApp.get('/deliveryperson/:deliveryPersonId',expressAsyncHandler(async(req,res)=>{
     console.log(req.params.deliveryPersonId);
-    const delpersons=await deliveryPersonModel.findOne({deliveryPersonId:req.params.deliveryPersonId});
+    const delpersons=await deliveryPersonModel.findOne({_id:req.params.deliveryPersonId});
     res.status(201).send({message:"delivery persons",payload:delpersons})
 }))
 
@@ -46,6 +46,8 @@ deliveryPersonApp.delete('/deliverypersonid/:_id',expressAsyncHandler(async(req,
   const d_id=await deliveryPersonModel.findByIdAndDelete(req.params._id)
   res.status(201).send({message:"Delivery Person deleted",payload:d_id})
 }))
+
+
 
 
 module.exports=deliveryPersonApp;
