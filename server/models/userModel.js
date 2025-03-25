@@ -1,16 +1,10 @@
 const mongoose=require('mongoose');
 const { parsePhoneNumberFromString } = require('libphonenumber-js');
-const { v4: uuidv4 } = require('uuid');
+
 const validatePhoneNumber = (phone) => {
     const phoneNumber = parsePhoneNumberFromString(phone, 'IN'); // Change 'IN' to default country if needed
     return phoneNumber ? phoneNumber.isValid() : false;
 };
-function generateShortId() {
-  const objectId = new mongoose.Types.ObjectId().toString(); // Generate a new ObjectId
-  const numericPart = objectId.replace(/\D/g, '').slice(0, 6); // Extract first 6 digits
-  return numericPart;
-}
-
 // model for user
 const bulinfo=new mongoose.Schema({
     flatNO:{
@@ -47,7 +41,6 @@ const userAdd=new mongoose.Schema({
     }
 })
 const userSchema = new mongoose.Schema({
-  userId: { type: String, default:generateShortId, unique: true,immutable: true},
   profileImg:{
         type: String
      },

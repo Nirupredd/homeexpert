@@ -15,6 +15,7 @@ shopKeeperApp.post('/shopkeeper',expressAsyncHandler(async(req,res)=>{
 // update shopkeeper by id
 shopKeeperApp.put('/shopKeeperupdate/:id', expressAsyncHandler(async (req, res) => {
   console.log("Replacing shopKeeper:", req.params.id);
+  console.log(req.body)
   // Find and replace shopKeeper by shopKeeper id
   const updatedshopKeeper = await shopKeeperModel.findOneAndReplace(
       { _id: req.params.id },  // Find shopKeeper by shopKeeperId
@@ -26,7 +27,6 @@ shopKeeperApp.put('/shopKeeperupdate/:id', expressAsyncHandler(async (req, res) 
   }
   res.status(200).send({ message: "shopKeeper modified successfully", payload: updatedshopKeeper });
 }));
-
 
 
 //get all shopkeepers
@@ -48,10 +48,46 @@ shopKeeperApp.delete('/shopkeeperid/:_id',expressAsyncHandler(async(req,res)=>{
   res.status(201).send({message:"Shop Kepper deleted",payload:d_id})
 }))
 
-//delete shopkeeper by id
-shopKeeperApp.delete('/shopkeeper/:shopKeeperId',expressAsyncHandler(async(req,res)=>{
-   const delete_id=await shopKeeperModel.findOneAndDelete({shopKeeperId:req.params.shopKeeperId})
-   res.status(201).send({message:"Shop Keeper deleted ",payload:delete_id})
-}))
+// post a new product details 
+
+shopKeeperApp.post('/product/:shopKeeperId', expressAsyncHandler(async (req, res) => {
+    const shopKeeperId = req.params.shopKeeperId;
+    const newProduct = req.body;
+
+    let shopKeeper = await shopKeeperModel.findById(shopKeeperId);
+    if (!shopKeeper) {
+        return res.status(404).send({ message: "ShopKeeper not found" });
+    }
+
+    // Check if product with the same imageUrl already exists
+    const isDuplicate = shopKeeper.products.some(product => product.imageUrl === newProduct.imageUrl);
+
+    if (isDuplicate) {
+        return res.status(400).send({ message: "Duplicate product already exists." });
+    }
+
+    // Add the new product
+    shopKeeper.products.push(newProduct);
+
+    // Save updated shopKeeper document
+    await shopKeeper.save();
+
+    res.status(201).send({ message: "Product posted successfully", payload: newProduct });
+}));
+
+shopKeeperApp.put('/productChange/:shopKeeperId/:quantity/:price',expressAsyncHandler(async(req,res)=>{
+    const shopKeeperId=req.params.shopKeeperId;
+    let shopKeeper=await shopKeeperModel.findById(shopKeeperId);
+    console.log(shopKeeperId)
+    if(!shopKeeper){
+        return res.status(404).send({message:"shopKeeper not found"})
+    }
+    shopKeeper.products.quantity=req.params.quantity;
+    shopKeeper.products.price=req.params.price;
+    const newshopKeeperItem=await shopKeeperModel(shopKeeper);
+    const newProductDoc=await newshopKeeperItem.save();
+    res.status(201).send({message:"Product deleted successfully",payload:newProductDoc})
+}));
+
 
 module.exports=shopKeeperApp;

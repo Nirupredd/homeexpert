@@ -49,12 +49,6 @@ userApp.delete('/userid/:_id',expressAsyncHandler(async(req,res)=>{
     res.status(201).send({message:"User deleted",payload:d_id})
 }))
 
-//delete user by userID
-userApp.delete('/user/:userId',expressAsyncHandler(async(req,res)=>{
-    console.log(req.params.userId)
-     const delete_id=await userModel.findOneAndDelete({userId:req.params.userId})
-     res.status(201).send({message:"User deleted ",payload:delete_id})
-}))
 // post a review 
 userApp.post('/userreview/:userId/:workerId',expressAsyncHandler(async(req,res)=>{
     //business logic(get user by userId)

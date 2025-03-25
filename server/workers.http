@@ -25,17 +25,15 @@ Content-Type: application/json
 ###get all workers
 GET http://localhost:3000/worker-api/workers
 
-###get worker by id
-GET http://localhost:3000/worker-api/worker/997364
 
 ###update a worker by id
-PUT http://localhost:3000/worker-api/workerupdate/67ddafa31ec24a1f56767d68
+PUT http://localhost:3000/worker-api/workerupdate/67e1aa2c588c47ebf385484a
 Content-Type: application/json
 
 {
   "profileImg":"http://example1.com/image.jpg",
   "mobileNumber":"+918790849561",
-  "firstName":"Praveen",
+  "firstName":"Prave",
   "lastName":"Kumar",
   "email":"ravi@gmail.com",
   "Address":{
@@ -49,3 +47,8 @@ Content-Type: application/json
     }
   }
 }
+
+###delete a worker by id
+
+
+DELETE http://localhost:3000/worker-api/workerid/67ddafa31ec24a1f56767d68

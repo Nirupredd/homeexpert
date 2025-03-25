@@ -47,11 +47,5 @@ deliveryPersonApp.delete('/deliverypersonid/:_id',expressAsyncHandler(async(req,
   res.status(201).send({message:"Delivery Person deleted",payload:d_id})
 }))
 
-//delete deliveryperson by id
-deliveryPersonApp.delete('/deliveryperson/:deliveryPersonId',expressAsyncHandler(async(req,res)=>{
-   const delete_id=await deliveryPersonModel.findOneAndDelete({deliveryPersonId:req.params.deliveryPersonId})
-   res.status(201).send({message:"Delivery Person deleted ",payload:delete_id})
-}))
-
 
 module.exports=deliveryPersonApp;

@@ -1,15 +1,19 @@
 const mongoose=require('mongoose');
 const { parsePhoneNumberFromString } = require('libphonenumber-js');
-const { v4: uuidv4 } = require('uuid');
+
 const validatePhoneNumber = (phone) => {
     const phoneNumber = parsePhoneNumberFromString(phone, 'IN'); // Change 'IN' to default country if needed
     return phoneNumber ? phoneNumber.isValid() : false;
 };
-function generateTimestampId() {
-  const timestamp = Date.now().toString().slice(-4); // Get last 4 digits of timestamp
-  const uuidPart = uuidv4().replace(/[^0-9]/g, '').substring(0, 2); // Extract 2 digits
-  return timestamp + uuidPart; // Combine to make 6 digits
-}
+
+const shopItemSchema = new mongoose.Schema({
+    category: { type: String, required: true },
+    name: { type: [String], required: true },
+    imageUrl: { type: String, required: true,unique: true},
+    description: { type: String, required: true },
+    quantity: { type: Number, required: true },
+    price: { type: Number, required: true }
+});
 const bulinfo=new mongoose.Schema({
     flatNO:{
         type:String,
@@ -50,7 +54,6 @@ const shop=new mongoose.Schema({
 // model for user
 
 const shopKeeperSchema = new mongoose.Schema({
-  shopKeeperId: { type: String, default: generateTimestampId, unique: true,immutable: true},
   profileImg:{
         type: String
      },
@@ -83,9 +86,12 @@ const shopKeeperSchema = new mongoose.Schema({
   shopAddress:{
     type:shop,
     required:true
+  },
+  products:{
+    type:[shopItemSchema],
+    unique:true
   }
 });
-
 const ShopKeeper=mongoose.model('shopkeeper',shopKeeperSchema);
 
 module.exports=ShopKeeper;
