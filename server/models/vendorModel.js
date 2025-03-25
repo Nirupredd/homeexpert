@@ -1,12 +1,9 @@
 const mongoose=require('mongoose');
 const { parsePhoneNumberFromString } = require('libphonenumber-js');
-
 const validatePhoneNumber = (phone) => {
     const phoneNumber = parsePhoneNumberFromString(phone, 'IN'); // Change 'IN' to default country if needed
     return phoneNumber ? phoneNumber.isValid() : false;
 };
-
-// model for user
 const bulinfo=new mongoose.Schema({
     flatNO:{
         type:String,
@@ -22,7 +19,9 @@ const bulinfo=new mongoose.Schema({
     }
 
 })
-const userAdd=new mongoose.Schema({
+// schema for address
+const shop=new mongoose.Schema({
+
     state:{
         type:String,
         required:true
@@ -40,8 +39,10 @@ const userAdd=new mongoose.Schema({
         type:bulinfo,
         required:true
     }
+
 })
-const userSchema = new mongoose.Schema({
+// model for user
+const vendorSchema = new mongoose.Schema({
   profileImg:{
         type: String
      },
@@ -51,7 +52,7 @@ const userSchema = new mongoose.Schema({
      required:true,
      validate: {
         validator: validatePhoneNumber,
-        message: props => ${props.value} is not a valid phone number!
+        message: props => `${props.value} is not a valid phone number!`
     }
   },
   firstName: {
@@ -64,14 +65,18 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     unique: true,
+    required:true,
     lowercase: true,
   },
-  Address:{
-    type:userAdd,
+  shopName:{
+    type:String,
+    required:true 
+  },
+  shopAddress:{
+    type:shop,
     required:true
   }
-}, { timestamps: true});
+});
+const vendor=mongoose.model('vendor',vendorSchema);
 
-const User=mongoose.model('user',userSchema);
-
-module.exports=User;
+module.exports=vendor;
