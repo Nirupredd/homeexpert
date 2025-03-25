@@ -6,7 +6,8 @@ const userApp = require("./APIs/user.js");
 const shopApp = require("./APIs/shopkeeper.js");
 const workerApp=require("./APIs/worker.js")
 const deliveryApp=require("./APIs/deliveryPerson.js");
-const shopItemsApp=require("./APIs/shopItems.js")
+const shopItemsApp=require("./APIs/shopItems.js");
+const shopGoodsApp=require("./APIs/shopGoods.js")
 const vendorApp = require("./APIs/Vendor.js");
 const cors=require('cors');
 app.use(cors())
@@ -29,6 +30,7 @@ app.use('/shopkeeper-api',shopApp)
 app.use('/worker-api',workerApp)
 app.use('/delivery-api',deliveryApp)
 app.use('/shopitems-api',shopItemsApp)
+app.use('/shopgoods-api',shopGoodsApp)
 app.use('/vendor-api',vendorApp)
 // error handler
 app.use((err,req,res,next)=>{
