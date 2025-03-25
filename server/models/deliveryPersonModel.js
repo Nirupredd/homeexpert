@@ -4,6 +4,8 @@ const validatePhoneNumber = (phone) => {
     const phoneNumber = parsePhoneNumberFromString(phone, 'IN'); // Change 'IN' to default country if needed
     return phoneNumber ? phoneNumber.isValid() : false;
 };
+
+
 // model for user
 
 const deliverySchema = new mongoose.Schema({
