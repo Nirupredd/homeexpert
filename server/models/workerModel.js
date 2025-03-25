@@ -75,6 +75,17 @@ const workerSchema = new mongoose.Schema({
       comment:String,
       userId:String
     }]
+  },
+  workTypes: {
+    type: [String], 
+    required: true, 
+    //validation that worker must have atleast one worker 
+    validate: {
+        validator: function (value) {
+            return value.length > 0; 
+        },
+        message: 'A worker must have at least one type of work.'
+    }
   }
 
 });

@@ -18,7 +18,8 @@ Content-Type: application/json
       "landmark":"Near Main Road",
       "area":"Andheri west"
     }
-  }
+  },
+  "workTypes":["plumbing", "electrician", "carpentry"]
 }
 
 ###get all workers
@@ -28,7 +29,7 @@ GET http://localhost:3000/worker-api/workers
 GET http://localhost:3000/worker-api/worker/67dc1260baf230d67a9250c3
 
 ###update a worker by id
-PUT http://localhost:3000/worker-api/workerupdate/67dc1260baf230d67a9250c3
+PUT http://localhost:3000/worker-api/workerupdate/67e2fabd1d1f28403e22f8b1
 Content-Type: application/json
 
 {
@@ -46,8 +47,9 @@ Content-Type: application/json
       "landmark":"Near Main Road",
       "area":"Andheri west"
     }
-  }
+  },
+  "workTypes":["plumbing", "electrician"]
 }
 
 ### DELETE WORKER
-DELETE http://localhost:3000/worker-api/workerid/67dc1260baf230d67a9250c3
+DELETE http://localhost:3000/worker-api/workerid/67e1b826e63936414426a1ae

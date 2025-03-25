@@ -41,7 +41,6 @@ workerApp.put('/workerupdate/:id', expressAsyncHandler(async (req, res) => {
 }));
 
 
-
 //delete worker by id
 workerApp.delete('/workerid/:_id',expressAsyncHandler(async(req,res)=>{
   const d_id=await workerModel.findByIdAndDelete(req.params._id)
