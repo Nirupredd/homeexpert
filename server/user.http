@@ -25,20 +25,19 @@ Content-Type: application/json
 GET http://localhost:3000/user-api/users
 
 ### get user by userid
-GET http://localhost:3000/user-api/user/643021
+GET http://localhost:3000/user-api/user/67e1ad3275308107766f7225
 
 
 
 ###deleting a user
-delete http://localhost:3000/user-api/userid/67db0abb68803b2cc4c8b754
+delete http://localhost:3000/user-api/userid/67e1ad3275308107766f7225
 
 
-###delete a user by specific filed
-delete http://localhost:3000/user-api/user/643021
+
 
 
 ###update a user by id
-PUT http://localhost:3000/user-api/userupdate/67ddacc4f9597132c6def8b8
+PUT http://localhost:3000/user-api/userupdate/67e1ad3275308107766f7225
 Content-Type: application/json
 
 {
@@ -61,7 +60,7 @@ Content-Type: application/json
 
 ### post comment on worker
 
-POST http://localhost:3000/user-api/userreview/67ddacc4f9597132c6def8b8/67ddafa31ec24a1f56767d68
+POST http://localhost:3000/user-api/userreview/67e1b6b1649045e14f3556cb/67e1b826e63936414426a1ae/
 Content-Type: application/json
 
 {
@@ -69,5 +68,4 @@ Content-Type: application/json
   "comment":"This is a great worker"
 }
 ### Delete review on worker
-DELETE http://localhost:3000/user-api/userdelete/67ddacc4f9597132c6def8b8/67ddafa31ec24a1f56767d68/67dfb15d39261675155b4c26
-
+DELETE http://localhost:3000/user-api/userdelete/67e1b6b1649045e14f3556cb/67e1b826e63936414426a1ae/67e1b872e63936414426a1bd

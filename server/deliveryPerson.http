@@ -31,19 +31,7 @@ Content-Type: application/json
 GET http://localhost:3000/delivery-api/deliveryPersons
 
 ###get delivery person by id
-GET http://localhost:3000/delivery-api/deliveryperson/470777
+GET http://localhost:3000/delivery-api/deliveryperson/67ddb5bece05e8d144861985
 
 ###deleting a delivery person by id
-delete http://localhost:3000/delivery-api/deliverypersonid/67db0dd74c54132c5cfcc360
-
-
-###delete a delivery by id
-delete http://localhost:3000/delivery-api/deliveryperson/470777
-
-
-###deleting a delivery person by id
-delete http://localhost:3000/worker-api/workerid/67db11ce395ae69780be1bc1
-
-
-###delete a delivery by id
-delete http://localhost:3000/worker-api/worker/919854
+delete http://localhost:3000/delivery-api/deliverypersonid/67ddb5bece05e8d144861985

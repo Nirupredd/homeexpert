@@ -6,14 +6,16 @@ const userApp = require("./APIs/user.js");
 const shopApp = require("./APIs/shopkeeper.js");
 const workerApp=require("./APIs/worker.js")
 const deliveryApp=require("./APIs/deliveryPerson.js");
-const cors=require('cors')
+const shopItemsApp=require("./APIs/shopItems.js")
+const vendorApp = require("./APIs/Vendor.js");
+const cors=require('cors');
 app.use(cors())
 const port=process.env.PORT || 4000
 
 //data base connection
 mongoose.connect(process.env.DB_URL)
 .then(
-    ()=>{app.listen(port,()=>console.log(`server listening on port ${port}..`))
+    ()=>{app.listen(port,()=>console.log("server listening on port ${port}.."))
     console.log("Data Base Connection Success")
 }
 )
@@ -26,7 +28,8 @@ app.use('/user-api',userApp)
 app.use('/shopkeeper-api',shopApp)
 app.use('/worker-api',workerApp)
 app.use('/delivery-api',deliveryApp)
-
+app.use('/shopitems-api',shopItemsApp)
+app.use('/vendor-api',vendorApp)
 // error handler
 app.use((err,req,res,next)=>{
     console.log("err object in express error handler:",err)
