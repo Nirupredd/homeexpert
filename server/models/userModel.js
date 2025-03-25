@@ -51,7 +51,7 @@ const userSchema = new mongoose.Schema({
      required:true,
      validate: {
         validator: validatePhoneNumber,
-        message: props => ${props.value} is not a valid phone number!
+        message: props => `${props.value} is not a valid phone number!`
     }
   },
   firstName: {
