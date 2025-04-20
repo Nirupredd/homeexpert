@@ -27,13 +27,13 @@ Content-Type: application/json
 GET http://localhost:3000/shopkeeper-api/shopkeepers
 
 ###get shopkeeper by shopKeeperID
-GET http://localhost:3000/shopkeeper-api/shopkeeper/67e1b2f99d57eabbdf3d0d9e
+GET http://localhost:3000/shopkeeper-api/shopkeeper/67e30af344bbcb03eb70876
 
 ###deleting a shopkeeper by db id
 delete http://localhost:3000/shopkeeper-api/shopkeeperid/67e1b2f99d57eabbdf3d0d9e
 
 ###update a shopKeeper by id
-PUT http://localhost:3000/shopKeeper-api/shopKeeperupdate/67e1b2f99d57eabbdf3d0d9e
+PUT http://localhost:3000/shopKeeper-api/shopKeeperupdate/67e30af344bbcb03eb70876
 Content-Type: application/json
 
 {
@@ -53,3 +53,20 @@ Content-Type: application/json
     }
   }
 }
+
+### post a product 
+POST http://localhost:3000/shopkeeper-api/product/67e30af344bbcb03eb70876c
+Content-Type: application/json
+
+{
+  "category": "vegetables",
+  "name": ["Onion", "Pyaaz", "Ullipaya", "Periya Vengayam"],
+  "imageUrl": "https://res.cloudinary.com/dm22f11c0/image/upload/v1742713064/download_holohs.jpg",
+  "description": "Fresh red onions",
+  "quantity": 50,
+  "price": 30
+}
+
+### Update product details 
+
+PUT http://localhost:3000/shopkeeper-api/productChange/67e30af344bbcb03eb70876c/67e30c8bf4000ef2a69116d4/2/1

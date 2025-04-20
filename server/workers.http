@@ -53,3 +53,4 @@ Content-Type: application/json
 
 ### DELETE WORKER
 DELETE http://localhost:3000/worker-api/workerid/67e1b826e63936414426a1ae
+

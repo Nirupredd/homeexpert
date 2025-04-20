@@ -32,7 +32,7 @@ deliveryPersonApp.put('/deliveryPersonupdate/:id', expressAsyncHandler(async (re
 deliveryPersonApp.get('/deliveryPersons',expressAsyncHandler(async(req,res)=>{
   const delpersons=await deliveryPersonModel.find();
   res.status(201).send({message:"delivery persons",payload:delpersons})
-  }))
+  }));
 
 //get all deliverypersons by id
 deliveryPersonApp.get('/deliveryperson/:deliveryPersonId',expressAsyncHandler(async(req,res)=>{

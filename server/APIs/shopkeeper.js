@@ -28,7 +28,6 @@ shopKeeperApp.put('/shopKeeperupdate/:id', expressAsyncHandler(async (req, res) 
 }));
 
 
-
 //get all shopkeepers
 shopKeeperApp.get('/shopkeepers',expressAsyncHandler(async(req,res)=>{
   const shoppersons=await shopKeeperModel.find();
@@ -53,6 +52,7 @@ shopKeeperApp.delete('/shopkeeperid/:_id',expressAsyncHandler(async(req,res)=>{
 shopKeeperApp.post('/product/:shopKeeperId', expressAsyncHandler(async (req, res) => {
     const shopKeeperId = req.params.shopKeeperId;
     const newProduct = req.body;
+    console.log(shopKeeperId, newProduct)
 
     let shopKeeper = await shopKeeperModel.findById(shopKeeperId);
     if (!shopKeeper) {
@@ -74,20 +74,33 @@ shopKeeperApp.post('/product/:shopKeeperId', expressAsyncHandler(async (req, res
 
     res.status(201).send({ message: "Product posted successfully", payload: newProduct });
 }));
+//update product details
+shopKeeperApp.put('/productChange/:shopKeeperId/:productId/:quantity/:price', expressAsyncHandler(async (req, res) => {
+  const { shopKeeperId, productId, quantity, price } = req.params;
 
-shopKeeperApp.put('/productChange/:shopKeeperId/:quantity/:price',expressAsyncHandler(async(req,res)=>{
-    const shopKeeperId=req.params.shopKeeperId;
-    let shopKeeper=await shopKeeperModel.findById(shopKeeperId);
-    console.log(shopKeeperId)
-    if(!shopKeeper){
-        return res.status(404).send({message:"shopKeeper not found"})
-    }
-    shopKeeper.products.quantity=req.params.quantity;
-    shopKeeper.products.price=req.params.price;
-    const newshopKeeperItem=await shopKeeperModel(shopKeeper);
-    const newProductDoc=await newshopKeeperItem.save();
-    res.status(201).send({message:"Product deleted successfully",payload:newProductDoc})
+  let shopKeeper = await shopKeeperModel.findById(shopKeeperId);
+  
+  if (!shopKeeper) {
+      return res.status(404).send({ message: "ShopKeeper not found" });
+  }
+
+  // Find the product inside the shopKeeper's products array
+  const productIndex = shopKeeper.products.findIndex(product => product._id.toString() === productId);
+  
+  if (productIndex === -1) {
+      return res.status(404).send({ message: "Product not found" });
+  }
+
+  // Update product details
+  shopKeeper.products[productIndex].quantity = parseInt(quantity, 10);
+  shopKeeper.products[productIndex].price = parseFloat(price);
+
+  // Save the updated shopKeeper document
+  await shopKeeper.save();
+
+  res.status(200).send({ message: "Product updated successfully", payload: shopKeeper.products[productIndex] });
 }));
+
 
 
 module.exports=shopKeeperApp;

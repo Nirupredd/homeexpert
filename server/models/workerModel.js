@@ -87,7 +87,6 @@ const workerSchema = new mongoose.Schema({
         message: 'A worker must have at least one type of work.'
     }
   }
-
 });
 
 const Worker=mongoose.model('worker',workerSchema);

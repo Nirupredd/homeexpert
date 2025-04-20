@@ -4,6 +4,16 @@ const validatePhoneNumber = (phone) => {
     const phoneNumber = parsePhoneNumberFromString(phone, 'IN'); // Change 'IN' to default country if needed
     return phoneNumber ? phoneNumber.isValid() : false;
 };
+
+const shopItemSchema = new mongoose.Schema({
+  category: { type: String, required: true },
+  name: { type: [String], required: true },
+  imageUrl: { type: String, required: true,unique: true},
+  description: { type: String, required: true },
+  quantity: { type: Number, required: true },
+  price: { type: Number, required: true }
+});
+
 const bulinfo=new mongoose.Schema({
     flatNO:{
         type:String,
@@ -76,7 +86,11 @@ const shopKeeperSchema = new mongoose.Schema({
   shopAddress:{
     type:shop,
     required:true
-  }
+  },
+    products:{
+      type:[shopItemSchema],
+      unique:true
+    }
 });
 
 const ShopKeeper=mongoose.model('shopkeeper',shopKeeperSchema);
