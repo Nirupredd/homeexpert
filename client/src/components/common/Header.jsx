@@ -1,106 +1,137 @@
-import React from "react";
-import ProfileDropdown from "./ProfileDropdown"; 
-import ThreeDotsDropdown  from "./ThreeDotsDropdown";
-function Header() {
-  return (
-    <div>
-      <nav className="fixed w-full bg-white shadow-[0px_4px_10px_0px_rgba(139,92,246,0.3)] p-2 flex justify-between items-center">
-        <a
-          href="#"
-          className="text-violet-600 font-[1000] text-lg cursor-pointer px-2"
-        >
-          HomeXpert
-        </a>
+import React, { useState } from "react";
+import { useCart } from '../../context/CartContext';
+import { Link } from 'react-router-dom';
+import SearchBar from './SearchBar';
 
-        {/* Search Bar */}
-        <div className="flex flex-grow justify-center space-x-8 ml-8">
-          <div className="relative w-full max-w-md md:max-w-lg lg:max-w-xl">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="absolute w-5 h-5 top-3.5 left-3 text-violet-500"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M21 21l-5.197-5.197M16.803 15.803A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-              />
+function Header() {
+  const { cartCount } = useCart();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+  return (
+    <div className="w-full">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-[0px_4px_10px_0px_rgba(138,74,243,0.3)] p-2 flex justify-between items-center">
+
+        <Link
+          to="/"
+          className="text-primary-custom font-[1000] text-xl cursor-pointer px-2 transition-all duration-300 hover:scale-105 flex items-center"
+          style={{ fontFamily: 'Gilroy, Arial, Helvetica Neue, sans-serif' }}
+        >
+          <span className="mr-1 text-primary-custom logo-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
             </svg>
-            <input
-              type="text"
-              placeholder="Search..."
-              className="border border-violet-300 rounded-lg shadow-sm px-10 py-2.5 text-slate-900 w-full focus:outline-none"
-            />
-          </div>
+          </span>
+          <span className="gradient-text font-bold">HomeXpert</span>
+        </Link>
+
+        <div className="flex flex-grow justify-center space-x-8 ml-8">
+          <SearchBar />
         </div>
 
-        {/* Profile Dropdown */}
-        <div className="hidden lg:flex items-center space-x-4">
-          <ul className="hidden lg:flex flex-grow justify-center space-x-8 ml-8">
-          <li className="font-[600] flex items-center space-x-1 cursor-pointer"> <ProfileDropdown /> </li>
-          <li className="text-violet-900 font-[600] flex items-center space-x-1 cursor-pointer ">
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    strokeWidth="1.5"
-    stroke="currentColor"
-    className="w-6 h-6 text-violet-500"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M2.25 3h1.5l1.312 5.25m0 0L6.75 15.75h10.5l1.688-7.5m-13.875 0h13.875M10.5 21a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm7.5 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
-    />
-  </svg>
-  <a href="#" className="text-violet-500 cursor-pointer">Cart</a>
-</li>
-<li className="text-violet-500 font-medium flex items-center space-x-2 cursor-pointer">
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="w-6 h-6 text-violet-500"
-  >
-    <path d="M3 7h18" />
-    <path d="M4 7V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2" />
-    <path d="M5 21h14" />
-    <path d="M5 21V10" />
-    <path d="M19 21V10" />
-    <path d="M9 21v-8h6v8" />
-  </svg>
-  <a href="#" className="text-violet-500">Become a Seller</a>
-</li>
-<li className="font-[600] flex items-center space-x-1 cursor-pointer"><ThreeDotsDropdown/></li>
-</ul>
-    </div>
-        {/* Mobile Menu Button */}
-        <div className="lg:hidden">
-          <button>
+        {/* Mobile menu button */}
+        <div className="lg:hidden flex items-center">
+          <button
+            onClick={toggleMobileMenu}
+            className="text-cement hover:text-primary-custom focus:outline-none"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
               fill="none"
               viewBox="0 0 24 24"
-              strokeWidth="1.5"
               stroke="currentColor"
-              className="w-6 h-6"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 5.25h16.5m-16.5 6h16.5m-16.5 6h16.5"
-              />
+              {mobileMenuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
             </svg>
           </button>
         </div>
+
+        <div className="hidden lg:flex items-center space-x-4">
+          <ul className="hidden lg:flex flex-grow justify-center space-x-8 ml-8" style={{ fontFamily: 'Gilroy, Arial, Helvetica Neue, sans-serif' }}>
+            <li className="text-cement font-[600] flex items-center space-x-1 cursor-pointer">
+              <a href="#" className="text-primary-custom cursor-pointer flex items-center transition-all duration-300 hover:text-primary-custom hover:scale-105 nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+                Login
+              </a>
+            </li>
+            <li className="text-cement font-[600] flex items-center space-x-1 cursor-pointer">
+              <Link to="/cart" className="text-primary-custom cursor-pointer flex items-center transition-all duration-300 hover:text-primary-custom hover:scale-105 nav-link">
+                <div className="relative flex items-center">
+                  <div className="relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    {cartCount > 0 && (
+                      <span className="absolute -top-2 -right-2 bg-primary-custom text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                        {cartCount}
+                      </span>
+                    )}
+                  </div>
+                  <span className="ml-2">Cart</span>
+                </div>
+              </Link>
+            </li>
+            <li className="text-cement font-bold flex items-center space-x-2 cursor-pointer">
+              <a href="#" className="text-primary-custom transition-all duration-300 hover:text-primary-custom hover:scale-105 nav-link font-bold">Work at HomeXpert</a>
+            </li>
+          </ul>
+        </div>
       </nav>
+
+      {/* Mobile menu */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden fixed top-[56px] inset-x-0 z-40 bg-white shadow-md py-3 px-4">
+          <ul className="flex flex-col space-y-4" style={{ fontFamily: 'Gilroy, Arial, Helvetica Neue, sans-serif' }}>
+            <li className="text-cement font-[600] flex items-center space-x-1 cursor-pointer">
+              <a href="#" className="text-primary-custom cursor-pointer flex items-center transition-all duration-300 hover:text-primary-custom hover:scale-105 nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+                Login
+              </a>
+            </li>
+            <li className="text-cement font-[600] flex items-center space-x-1 cursor-pointer">
+              <Link to="/cart" className="text-primary-custom cursor-pointer flex items-center transition-all duration-300 hover:text-primary-custom hover:scale-105 nav-link">
+                <div className="relative flex items-center">
+                  <div className="relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    {cartCount > 0 && (
+                      <span className="absolute -top-2 -right-2 bg-primary-custom text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                        {cartCount}
+                      </span>
+                    )}
+                  </div>
+                  <span className="ml-2">Cart</span>
+                </div>
+              </Link>
+            </li>
+            <li className="text-cement font-bold flex items-center space-x-2 cursor-pointer">
+              <a href="#" className="text-primary-custom transition-all duration-300 hover:text-primary-custom hover:scale-105 nav-link font-bold">Work at HomeXpert</a>
+            </li>
+          </ul>
+        </div>
+      )}
     </div>
   );
 }

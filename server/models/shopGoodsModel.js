@@ -7,22 +7,26 @@ const shopGoodsSchema = new mongoose.Schema({
     required: true,
   },
   imageUrl: {
-    type: String, 
+    type: String,
     required: true,
   },
   cost: {
-    type: Number, 
+    type: Number,
     required: true,
   },
   description: {
-    type: String, 
+    type: String,
     required: true,
   },
   quantity: {
-    type: Number, 
+    type: Number,
     required: true,
   },
-}); 
+  category: {
+    type: String,
+    default: 'uncategorized'
+  },
+});
 
 const shopGoodsModel = mongoose.model('shopGood', shopGoodsSchema,"shopGoods");
 
