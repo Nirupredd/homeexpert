@@ -9,6 +9,7 @@ const deliveryApp=require("./APIs/deliveryPerson.js");
 const shopItemsApp=require("./APIs/shopItems.js");
 const shopGoodsApp=require("./APIs/shopGoods.js")
 const vendorApp = require("./APIs/Vendor.js");
+const worksApp=require("./APIs/works.js")
 const cors=require('cors');
 app.use(cors())
 const port=process.env.PORT || 4000
@@ -32,6 +33,7 @@ app.use('/delivery-api',deliveryApp)
 app.use('/shopitems-api',shopItemsApp)
 app.use('/shopgoods-api',shopGoodsApp)
 app.use('/vendor-api',vendorApp)
+app.use('/works-api',worksApp)
 // error handler
 app.use((err,req,res,next)=>{
     console.log("err object in express error handler:",err)

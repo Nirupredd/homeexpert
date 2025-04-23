@@ -41,7 +41,14 @@ const deliverySchema = new mongoose.Schema({
   vechicle:{
     type:Boolean,
     required:true
+  },
+  rating:{
+    type:Number,
+    default:0,
+    min:0,
+    max:5
   }
+
 });
 
 const delivery=mongoose.model('deliveryperson',deliverySchema,"deliverypersons");
