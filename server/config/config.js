@@ -3,15 +3,6 @@
 require('dotenv').config();
 
 module.exports = {
-  // Twilio configuration
-  twilio: {
-    // For Twilio to work properly, TWILIO_ACCOUNT_SID must start with "AC"
-    accountSid: process.env.TWILIO_ACCOUNT_SID || '',
-    authToken: process.env.TWILIO_AUTH_TOKEN || '',
-    phoneNumber: process.env.TWILIO_PHONE_NUMBER || '',
-    // Whether to enable SMS sending (will be simulated in development mode)
-    enabled: process.env.ENABLE_SMS === 'true' || false,
-  },
 
   // OTP configuration
   otp: {
