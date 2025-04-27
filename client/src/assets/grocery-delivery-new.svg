@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+  <!-- Background -->
+  <rect width="300" height="300" fill="#f8f0ff" rx="10" ry="10"/>
+  
+  <!-- Grocery Bag -->
+  <path d="M100,80 L200,80 L220,220 L80,220 Z" fill="#8a4af3" opacity="0.8"/>
+  <path d="M110,80 L190,80 L205,210 L95,210 Z" fill="white"/>
+  
+  <!-- Bag Handles -->
+  <path d="M110,80 Q110,50 145,50 Q180,50 190,80" fill="none" stroke="#8a4af3" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- Grocery Items -->
+  <circle cx="130" cy="120" r="15" fill="#ff6b6b"/> <!-- Apple -->
+  <circle cx="170" cy="120" r="15" fill="#feca57"/> <!-- Orange -->
+  <rect x="120" cy="150" width="60" height="20" rx="5" ry="5" fill="#1dd1a1"/> <!-- Lettuce -->
+  <rect x="130" cy="180" width="40" height="15" rx="3" ry="3" fill="#ff9ff3"/> <!-- Package -->
+  
+  <!-- Delivery Icon -->
+  <circle cx="220" cy="70" r="30" fill="white" stroke="#8a4af3" stroke-width="3"/>
+  <path d="M205,70 L235,70 M220,55 L220,85" stroke="#8a4af3" stroke-width="3"/>
+</svg>

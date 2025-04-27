@@ -1,0 +1,58 @@
+###shop https
+
+###post request for shop
+POST http://localhost:3000/vendor-api/vendor
+Content-Type: application/json
+
+{
+  "profileImg": "https://example.com/image.jpg",
+  "mobileNumber": "+919876543210",
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "johndoe@example.com",
+  "shopName": "Doe Electronics",
+  "shopAddress": {
+    "state": "Maharashtra",
+    "city": "Mumbai",
+    "pincode": "400001",
+    "address": {
+      "flatNO": "101",
+      "landmark": "Near Mall",
+      "area": "Andheri West"
+    }
+  }
+}
+
+###get all vendor
+GET http://localhost:3000/vendor-api/vendors
+
+###get vendor by _id
+GET http://localhost:3000/vendor-api/vendor/67e19e3b3f578fd868559349
+
+###deleting a vendor by db id
+delete http://localhost:3000/vendor-api/vendorid/67e19e3b3f578fd868559349
+
+
+
+
+###update a vendor by id
+PUT http://localhost:3000/vendor-api/vendorupdate/67e19e3b3f578fd868559349
+Content-Type: application/json
+
+{
+  "profileImg":"http://example1.com/image.jpg",
+  "mobileNumber":"+918790849561",
+  "firstName":"Praveen",
+  "lastName":"Kumar",
+  "email":"ravi@gmail.com",
+  "shopAddress":{
+    "state":"Andhra Pradesh",
+    "city":"Tiruvuru",
+    "pincode":"521236",
+    "address":{
+      "flatNo":"101",
+      "landmark":"Main Road",
+      "area":"Andheri west"
+    }
+  }
+}

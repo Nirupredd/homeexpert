@@ -1,0 +1,56 @@
+###worker https
+###worker person post req
+POST http://localhost:3000/worker-api/worker
+Content-Type: application/json
+
+{
+  "profileImg":"http://example1.com/image.jpg",
+  "mobileNumber":"+918790849561",
+  "firstName":"Ravi",
+  "lastName":"Karnam",
+  "email":"ravi@gmail.com",
+  "Address":{
+    "state":"Andhra Pradesh",
+    "city":"Tiruvuru",
+    "pincode":"521235",
+    "address":{
+      "flatNo":"101",
+      "landmark":"Near Main Road",
+      "area":"Andheri west"
+    }
+  },
+  "workTypes":["plumbing", "electrician", "carpentry"]
+}
+
+###get all workers
+GET http://localhost:3000/worker-api/workers
+
+###get worker by id
+GET http://localhost:3000/worker-api/worker/67dc1260baf230d67a9250c3
+
+###update a worker by id
+PUT http://localhost:3000/worker-api/workerupdate/67e2fabd1d1f28403e22f8b1
+Content-Type: application/json
+
+{
+  "profileImg":"http://example1.com/image.jpg",
+  "mobileNumber":"+918790849561",
+  "firstName":"Praveen",
+  "lastName":"Kumar",
+  "email":"ravi@gmail.com",
+  "Address":{
+    "state":"Andhra Pradesh",
+    "city":"Tiruvuru",
+    "pincode":"521236",
+    "address":{
+      "flatNo":"101",
+      "landmark":"Near Main Road",
+      "area":"Andheri west"
+    }
+  },
+  "workTypes":["plumbing", "electrician"]
+}
+
+### DELETE WORKER
+DELETE http://localhost:3000/worker-api/workerid/67e1b826e63936414426a1ae
+

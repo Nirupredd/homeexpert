@@ -1,0 +1,9 @@
+###get all shopItems
+GET http://localhost:3000/works-api/works
+
+###get shopItems by Id
+GET http://localhost:3000/works-api/work/68092ecaaaa4e5554186b01d
+
+###get shopItems by name
+GET http://localhost:3000/works-api/work/name/Electrician
+

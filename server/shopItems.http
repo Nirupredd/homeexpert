@@ -1,0 +1,11 @@
+    ###get all shopItems
+GET http://localhost:3000/shopitems-api/shopitems
+
+###get shopItems by Id
+GET http://localhost:3000/shopitems-api/shopitem/67dfb54de97ca6599d86b01e
+
+###get shopItems by name
+GET http://localhost:3000/shopitems-api/shopItem/name/Onion
+
+###get shopItems by catogery
+GET http://localhost:3000/shopitems-api/shopItem/category/fruits
